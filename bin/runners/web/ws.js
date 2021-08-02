@@ -13,8 +13,8 @@ const io = sio(httpServer);          // связываем с http сервер�
     io.emit('/new text', { user: data.user, message: data.message });
 });
 
-socket.on('/typing', (data) => {                          // отправляем всем юзерам сообщение, что кто-то печатает
-  socket.broadcast.emit('/typing', data)
+socket.on('/typing', (data) => {                          // слушаем событие type на фронте 
+  socket.broadcast.emit('/typing', data)                  //  отправляем всем юзерам сообщение, что кто-то печатает
 });   
 
 //  Disconnect 
