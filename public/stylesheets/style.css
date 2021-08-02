@@ -1,0 +1,39 @@
+body{
+  margin: 20px;
+}
+
+p {
+  text-align: left;
+  color: green;
+  font-weight: bold;
+  font-size: 30px;
+  margin: 7px;
+  padding-left: 100px;
+}
+
+.chatBox {
+  height: 400px;
+  width: 510px;
+  display: flex;
+  justify-content: center;
+  border: solid 1px green;
+  position: absolute;
+  background-color:rgb(244, 253, 244);
+}
+
+.sendMessage {
+  position: absolute; 
+  bottom: 10px;
+}
+
+.message {
+  width: 260px;
+}
+
+.msg {
+  max-width: 500px;
+  border: solid 1px rgb(184, 181, 181);
+  padding: 2px;
+  margin: 7px;
+  background-color: rgb(200, 250, 225);
+}
