@@ -6,7 +6,7 @@ const typingMessage = document.querySelector('.typingMessage');
 
 const formEl = document.forms.sendMessage;
 
-formEl.addEventListener('submit', (ev) => {
+formEl.addEventListener('submit', (ev) => {                        // отслеживаем событие submit и по нажатию срабатывают функции:  
     ev.preventDefault();
 
     const formData = new FormData(ev.target);
@@ -15,51 +15,27 @@ formEl.addEventListener('submit', (ev) => {
     const message = formData.get('message');
     
     const sendText = () => {
-        socket.emit('/send text', { user, message });  // отправляем сообщения на бек
+        socket.emit('/send text', { user, message });               // отправляем сообщения на бек
         //console.log({user, message})
-        userText.value = '';
+        userText.value = '';                                        // очищаем поле сообщения
     }
     sendText();
 
-    userText.addEventListener('keypress', () => {
-        socket.emit('/typing', user)
-    })
+    userText.addEventListener('keypress', () => {                    // отслеживаем событие keypress 
+        socket.emit('/typing', user)                                 // отправляем эту инфо на сервер
+    });
 
-    socket.on('/typing', (data) => {
-        //console.log(data);
-        //console.log(data.user);
+    socket.on('/typing', (data) => {                                  // получаем с сервера инфо о событии typing и выводим ее на фронт 
         const typingHtml = `<span>${data} is typing a message...</span>`;
-        //typingMessage.innerHTML = `<span>${data.user} is typing a message...</span>`
         typingMessage.insertAdjacentHTML('beforeend', typingHtml);
     });
 
-
-    // const divEl = (data) => {
-    //     let list = [];
-    //     for(el of data){
-    //         const html = `<div>${el}</div>`;
-    //         list.push(html);
-    //     };
-    //     allMessages.innerHTML = list;
-    // };
-
-    // const messageHistory = (data) => {
-    //     console.log(data)
-    //     const divEl = document.createElement('div');
-    //     divEl.innerHTML = data;
-    //     allMessages.append(divEl);
-    // }
-
     const getText = (data) => {
-        socket.on('/new text', (data) => {          // получаем сообщения с бека
+        socket.on('/new text', (data) => {                             // получаем сообщения с бека
         //console.log(data)
-        typingMessage.innerHTML = '';
-        // const divEl = document.createElement('div');
-        // divEl.innerHTML = data;
-        // allMessages.append(divEl);
-        const html = `<div class="msg">${data.user}:     ${data.message}</div>`;
-        //allMessages.innerHTML = html;
-        //chatBox.append(allMessages);
+        typingMessage.innerHTML = '';                                  //  очищаем поле о наборе текста
+       
+        const html = `<div class="msg">${data.user}:     ${data.message}</div>`;    // выводим сообщение юзерам
         allMessages.insertAdjacentHTML('beforeend', html)
        });
     }
@@ -67,23 +43,3 @@ formEl.addEventListener('submit', (ev) => {
     
     
 });
-
-
-    
-  
-
-// setTimeout(() => {
-//     socket.emit('/chat', { uid: 'abr', message: 'Hi there' });
-// }, 1000);
-
-
-// const run = () => {
-//     socket.emit('/pow', { val: 10, lvl: 2 }, (data) => {
-//         console.log('data:', data);
-//     });
-// }
-// run();
-
-// socket.on('powResult', (data) => {
-// //!!! если делаем так, то результат попадает в єту отдельную функцию
-// });
