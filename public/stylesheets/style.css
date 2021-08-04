@@ -13,27 +13,59 @@ p {
 
 .chatBox {
   height: 400px;
-  width: 510px;
+  width: 500px;
+  border-radius: 10px;
   display: flex;
   justify-content: center;
-  border: solid 1px green;
+  border: solid 1.5px #59bd59;
   position: absolute;
   background-color:rgb(244, 253, 244);
 }
 
 .sendMessage {
   position: absolute; 
-  bottom: 10px;
+  bottom: 15px;
+}
+
+.name {
+  width: 140px;
 }
 
 .message {
-  width: 260px;
+  width: 240px;
+}
+
+.name, .message {
+  border-radius: 5px;
+  border: solid 1.5px #59bd59;
+  padding: 3px;
+  background-color: #e7f1e7
+}
+
+input::-webkit-input-placeholder{
+  color: #268326;
+  }
+
+.btn {
+  border-radius: 5px;
+  background-color: #59bd59;
+  border: solid 1.5px  #379e37;
+  padding: 3px;
+  width: 70px;
+  color: #052b05
 }
 
 .msg {
-  max-width: 500px;
-  border: solid 1px rgb(184, 181, 181);
+  width: 400px;
+  border: solid 1.5px  #78cc78;
+  border-radius: 5px;
   padding: 2px;
   margin: 7px;
-  background-color: rgb(200, 250, 225);
+  background-color: #d5ebd5;
+}
+
+.typingMessage {
+  width: 400px;
+  margin: 7px;
+  padding: 3px;
 }
