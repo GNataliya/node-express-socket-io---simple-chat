@@ -7,17 +7,19 @@
   </head>
   <body>
     
-    <p>Welcome to chatroom</p> 
+    <p>Welcome to the chat</p> 
 
     <div class="chatBox">
 
-      <div class="showMessage"></div>
-      <div class="typingMessage"></div>
+      <div class="showMessage">
+        <div class="newMessage"></div>
+        <div class="typingMessage show"></div>
+      </div>
 
       <form name="sendMessage" class="sendMessage"  action="">
-        <input name="name" type="text" placeholder="Enter your name">
+        <input name="name" class="name" type="text" placeholder="Enter your name">
         <input name="message" class="message" type="text" placeholder="Type a message">
-        <button type="submit">Send</button>
+        <button type="submit" class="btn">Send</button>
       </form>
 
     </div>
